@@ -1,0 +1,38 @@
+@import 'styles/common.sass'
+
+.header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0 24px
+  height: 88px
+  background-color: $main
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5)
+  &--left
+    display: flex
+  &--name
+    padding-right: 65px
+    font-size: 36px
+    line-height: 40px
+    color: #fff
+  &--tabs
+    > *
+      text-decoration-color: $blue
+      -webkit-text-decoration-color: $blue
+      text-decoration: underline $blue
+      font-size: 24px
+      line-height: 40px
+      color: $blue
+      cursor: pointer
+    >:nth-child(2)
+      cursor: default
+      padding: 0 8px
+    &-active
+      text-decoration-color: $activeLink
+      -webkit-text-decoration-color: $activeLink
+      color: $activeLink
+  &--right
+    font-size: 20px
+    line-height: 46px
+    cursor: pointer
+    color: #fff

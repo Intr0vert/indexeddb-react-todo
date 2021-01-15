@@ -1,0 +1,36 @@
+@import 'styles/common.sass'
+
+.taskRow
+  justify-content: space-between
+  padding: 8px 0
+  width: 1000px
+  height: 80px
+  border-bottom: 2px solid $main
+  @include flex--align-center
+  &--left
+    display: flex
+    flex-direction: column
+    height: 100%
+    justify-content: space-between
+  &--top
+    @include flex--align-center
+    &--black
+      padding-right: 16px
+      font-weight: 500
+      font-size: 18px
+      line-height: 20px
+      color: #000000
+    &--blue
+      color: $main
+      @include flex--align-center
+      img
+        padding-right: 4px
+  &--bottom
+    font-size: 18px
+    line-height: 20px
+    color: #808080
+  &--right
+    >*
+      cursor: pointer
+      &:first-child
+        padding-right: 14px

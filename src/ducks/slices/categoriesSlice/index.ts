@@ -1,0 +1,1 @@
+export { categoriesSlice } from './categoriesSlice';
