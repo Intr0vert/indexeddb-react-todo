@@ -1,0 +1,44 @@
+@import 'styles/common.sass'
+
+.select
+  &--placeholder
+    width: 100%
+    display: flex
+    justify-content: space-between
+    &-name
+      font-family: Roboto
+      font-style: normal
+      font-weight: normal
+      font-size: 20px
+      line-height: 46px
+
+      color: rgba(0, 0, 0, 0.5)
+  &--arrow
+    &-active
+      transform: rotate(180deg)
+  &--options
+    position: absolute
+    bottom: -4px
+    left: -2px
+    transform: translate(0, 100%)
+    width: calc(100% + 4px)
+
+    border: 2px solid $hover
+    box-sizing: border-box
+    border-radius: 4px
+    z-index: 10
+  &--option
+    display: flex
+    align-items: center
+    padding: 0 8px
+
+    height: 46px
+    font-size: 20px
+    color: #000000
+    background-color: #DBE2EF
+    cursor: pointer
+    &:hover
+      background: linear-gradient(0deg, rgba(37, 127, 234, 0.3), rgba(37, 127, 234, 0.3)), #BFCBE3
+    &:active
+      background-color: $hover
+      color: #fff

@@ -1,19 +1,31 @@
 import { TaskRow } from 'components';
 import { useSelector } from 'react-redux';
-import { State, Item, ItemState } from 'types';
+import { State, Item, Category } from 'types';
+import { OpenedModal } from './OpenedModal';
 import './styles.sass';
+import { ContentItems } from './types';
 
 export const Content = () => {
   const { items } = useSelector(
-    ({ itemReducer, categoryReducer }: State): ItemState => ({
-      ...itemReducer,
-      ...categoryReducer,
-    })
+    ({
+      categoryReducer,
+      itemReducer,
+      settingsReducer,
+    }: State): ContentItems => {
+      return {
+        items: settingsReducer.isTask
+          ? itemReducer.items
+          : categoryReducer.categories,
+      };
+    }
   );
 
   return (
     <div className={'content'}>
-      {items && items.map((el: Item, i: number) => <TaskRow {...el} key={i} />)}
+      {items.map((el: Item & Category, i: number) => (
+        <TaskRow {...el} key={i} />
+      ))}
+      <OpenedModal />
     </div>
   );
 };

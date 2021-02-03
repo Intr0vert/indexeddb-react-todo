@@ -4,7 +4,7 @@ import { actions } from 'ducks';
 import './styles.sass';
 import { TaskRowProps } from './types';
 
-export const TaskRow: React.FC<TaskRowProps> = (props: TaskRowProps) => {
+export const TaskRow = (props: TaskRowProps) => {
   const { name, description } = props;
   const { removeItem } = actions;
 

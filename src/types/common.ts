@@ -5,14 +5,20 @@ type CommonTypes = {
 };
 
 export type Item = {
-  categoryId: string;
+  categoryId?: string; // TODO change it
 } & CommonTypes;
 
 export type Category = CommonTypes;
 
-export type ItemState = { items: Array<Item> };
-export type CategoriesState = { categories: Array<Category> };
+export type SettingsState = { isTask: boolean };
+export type ItemState = { items: Item[] };
+export type CategoriesState = { categories: Category[] };
+export type ModalState = {
+  actualModal: string | null;
+};
 export type State = {
   itemReducer: ItemState;
   categoryReducer: CategoriesState;
+  modalReducer: ModalState;
+  settingsReducer: SettingsState;
 };

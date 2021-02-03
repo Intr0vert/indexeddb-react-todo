@@ -1,0 +1,46 @@
+@import 'styles/common.sass'
+
+$red: #EC1D1D
+
+.input
+  &--wrapper
+    position: relative
+    display: flex
+    align-items: center
+    height: 46px
+    width: 100%
+    padding: 0 8px
+
+    border: 2px solid $main
+    box-sizing: border-box
+    border-radius: 4px
+    transition: border 0.3s
+    &:hover, &:focus
+      border: 2px solid $hover
+    &-error, &-error:hover, &-error:focus
+      border: 2px solid $red
+      .input--name
+        color: $red
+  &--name
+    position: absolute
+    padding: 0 2px
+    top: -11px
+    left: 13px
+    background-color: $blue
+
+    font-size: 18px
+    line-height: 20px
+    color: $main
+    &-red
+      color: $red
+  &--input
+    width: 100%
+    font-size: 20px
+
+    outline-offset: 0px
+    outline: none
+    background-color: $blue
+    border: none
+    &::placeholder
+      opacity: 1
+      color: rgba(0, 0, 0, 0.5)

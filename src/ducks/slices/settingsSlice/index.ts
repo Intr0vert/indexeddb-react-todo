@@ -1,0 +1,1 @@
+export { settingsSlice } from './settingsSlice';

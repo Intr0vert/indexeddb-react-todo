@@ -1,0 +1,85 @@
+@import 'styles/common.sass'
+
+.modal
+  &--background
+    position: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+    top: 0
+    left: 0
+    height: 100vh
+    width: 100vw
+
+    background: rgba(0, 0, 0, 0.3)
+    z-index: 100
+  &--wrapper
+    position: relative
+    padding: 24px
+    width: 100%
+
+    background: $blue
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5)
+    border-radius: 4px
+  &--title
+    margin-bottom: 42px
+
+    font-weight: 500
+    font-size: 40px
+    line-height: 56px
+
+    color: $main
+  &--close
+    position: absolute
+    top: 24px
+    right: 24px
+    width: 24px
+    height: 25px
+
+    cursor: pointer
+  &--footer
+    display: flex
+    justify-content: flex-end
+  &--button
+    height: 46px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    font-size: 20px
+    border: 2px solid $main
+    box-sizing: border-box
+    border-radius: 4px
+    cursor: pointer
+    transition: all 0.3s
+    &-cancel
+      margin-left: 24px
+
+      color: $main
+      &:hover
+        background: rgba(37, 127, 234, 0.2)
+        border: 2px solid $hover
+      &:active
+        color: #fff
+        border: 2px solid $hover
+        background-color: $hover
+    &-submit
+      color: #FFFFFF
+      background: $main
+      &:hover
+        border: 2px solid $hover
+        background-color: $hover
+      &:active
+        background: #65ABFF
+        border: 2px solid #65ABFF
+  &--row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 24px
+  &--col
+    width: 50%
+    &:first-child
+      padding-right: 12px
+    &:last-child
+      padding-left: 12px

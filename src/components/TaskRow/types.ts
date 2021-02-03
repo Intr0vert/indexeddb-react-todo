@@ -1,3 +1,3 @@
-import { Todo } from 'types';
+import { Category, Item } from 'types';
 
-export type TaskRowProps = {} & Todo;
+export type TaskRowProps = Item & Category;

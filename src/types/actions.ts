@@ -1,21 +1,18 @@
-import { Category, Todo } from './common';
+import { Category, Item } from './common';
 
-export type AddItemAction = {
+type Action<T> = {
   type: string;
-  payload: Todo;
+  payload: T;
 };
 
-export type RemoveItemAction = {
-  type: string;
-  payload: Todo;
-};
+export type AddItemAction = Action<Item>;
 
-export type AddCategoryAction = {
-  type: string;
-  payload: Category;
-};
+export type RemoveItemAction = Action<Item>;
 
-export type RemoveCategoryAction = {
-  type: string;
-  payload: Category;
-};
+export type AddCategoryAction = Action<Category>;
+
+export type ChangeIsTaskAction = Action<boolean>;
+
+export type RemoveCategoryAction = Action<Category>;
+
+export type ShowModal = Action<string>;

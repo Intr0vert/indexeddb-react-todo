@@ -1,0 +1,1 @@
+export { modalSlice } from './modalSlice';
