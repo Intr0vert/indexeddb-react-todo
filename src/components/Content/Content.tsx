@@ -1,21 +1,27 @@
 import { TaskRow } from 'components';
-import { useSelector } from 'react-redux';
+import { fetchCategories } from 'ducks/slices/categoriesSlice/categoriesSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { State, Item, Category } from 'types';
 import { OpenedModal } from './OpenedModal';
 import './styles.sass';
 import { ContentItems } from './types';
 
 export const Content = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
   const { items } = useSelector(
     ({
       categoryReducer,
       itemReducer,
       settingsReducer,
     }: State): ContentItems => {
+      const isTask = settingsReducer.isTask;
       return {
-        items: settingsReducer.isTask
-          ? itemReducer.items
-          : categoryReducer.categories,
+        items: isTask ? itemReducer.items : categoryReducer.categories,
       };
     }
   );

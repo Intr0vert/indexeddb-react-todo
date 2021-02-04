@@ -5,7 +5,7 @@ type CommonTypes = {
 };
 
 export type Item = {
-  categoryId?: string; // TODO change it
+  categoryId?: string;
 } & CommonTypes;
 
 export type Category = CommonTypes;

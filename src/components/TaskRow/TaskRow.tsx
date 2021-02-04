@@ -5,7 +5,7 @@ import './styles.sass';
 import { TaskRowProps } from './types';
 
 export const TaskRow = (props: TaskRowProps) => {
-  const { name, description } = props;
+  const { categoryId, description, name } = props;
   const { removeItem } = actions;
 
   const dispatch = useDispatch();
@@ -15,9 +15,11 @@ export const TaskRow = (props: TaskRowProps) => {
       <div className='taskRow--left'>
         <div className='taskRow--top'>
           <span className='taskRow--top--black'>{name}</span>
-          <span className='taskRow--top--blue'>
-            <img src={folder} alt='' /> Категория 1
-          </span>
+          {categoryId && (
+            <span className='taskRow--top--blue'>
+              <img src={folder} alt='' /> Категория 1
+            </span>
+          )}
         </div>
         <div className='taskRow--bottom'>{description}</div>
       </div>

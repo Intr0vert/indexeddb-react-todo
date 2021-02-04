@@ -78,12 +78,12 @@ export const getItems = () =>
     });
   });
 
-export const removeItem = () =>
+export const removeItem = (id: string) =>
   new Promise<void>((resolve) => {
     openDatabase(DATABASE_NAME, 1).then((db: IDBDatabase) => {
       const tx = db.transaction('item', 'readwrite');
       const itemNotes = tx.objectStore('item');
-      const req = itemNotes.delete(1);
+      const req = itemNotes.delete(id);
 
       req.onsuccess = () => {
         resolve();
@@ -91,14 +91,14 @@ export const removeItem = () =>
     });
   });
 
-export const removeCategory = () =>
+export const removeCategory = (id: string) =>
   new Promise<void>((resolve) => {
     openDatabase(DATABASE_NAME, 1).then((db: IDBDatabase) => {
       const tx = db.transaction('category', 'readwrite');
       const categoryNotes = tx.objectStore('category');
-      const req = categoryNotes.delete(1);
+      const req = categoryNotes.delete(id);
 
-      req.onsuccess = () => {
+      req.onsuccess = (e) => {
         resolve();
       };
     });
