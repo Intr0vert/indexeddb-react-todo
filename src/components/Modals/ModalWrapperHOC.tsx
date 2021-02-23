@@ -8,6 +8,7 @@ type ModalWrapperHOCProps = {
   cancelText: string;
   cancelWidth: number;
   modalWidth: number;
+  onSubmit: () => void;
   submitText: string;
   submitWidth: number;
   title: string;
@@ -17,6 +18,7 @@ type ModalWrapperHOCProps = {
 export const ModalWrapperHOC = ({
   cancelText,
   cancelWidth,
+  onSubmit,
   modalWidth,
   submitText,
   submitWidth,
@@ -35,6 +37,7 @@ export const ModalWrapperHOC = ({
         <View />
         <div className='modal--footer'>
           <span
+            onClick={() => dispatch(onSubmit())}
             className='modal--button modal--button-submit'
             style={{ width: submitWidth }}
           >

@@ -1,5 +1,5 @@
 import { TaskRow } from 'components';
-import { fetchCategories } from 'ducks/slices/categoriesSlice/categoriesSlice';
+import { fetchCategories, fetchItems } from 'ducks';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { State, Item, Category } from 'types';
@@ -12,6 +12,7 @@ export const Content = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    dispatch(fetchItems());
   }, [dispatch]);
   const { items } = useSelector(
     ({

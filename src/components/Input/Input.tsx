@@ -1,23 +1,30 @@
-import { useState } from 'react';
 import './styles.sass';
 
 type InputProps = {
+  isError?: boolean;
   isRequired?: boolean;
   maxLength: number;
   name?: string;
+  onBlur?: () => void;
+  onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
+  value: string;
 };
 
 export const Input = ({
+  isError,
   isRequired,
   maxLength,
   name,
+  onBlur,
+  onChangeHandler,
   placeholder,
+  value,
 }: InputProps) => {
-  const [text, changeText] = useState('');
-
   return (
-    <label className={`input--wrapper`}>
+    <label
+      className={`input--wrapper ${isError ? 'input--wrapper-error' : ''}`}
+    >
       {name && (
         <span className={'input--name'}>
           {name}
@@ -26,8 +33,9 @@ export const Input = ({
       )}
       <input
         type='text'
-        value={text}
-        onChange={(e) => changeText(e.target.value)}
+        value={value}
+        onBlur={onBlur}
+        onChange={onChangeHandler}
         className={'input--input'}
         placeholder={placeholder}
         maxLength={maxLength}

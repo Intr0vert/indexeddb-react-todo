@@ -1,1 +1,1 @@
-export { categoriesSlice } from './categoriesSlice';
+export * from './categoriesSlice';

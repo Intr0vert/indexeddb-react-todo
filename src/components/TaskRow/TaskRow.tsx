@@ -1,13 +1,17 @@
 import { bucket, edit, folder } from 'assets';
-import { useDispatch } from 'react-redux';
-import { actions } from 'ducks';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles.sass';
 import { TaskRowProps } from './types';
+import { openDeleteModal, openEditModal } from './handlers';
+import { State } from 'types';
 
 export const TaskRow = (props: TaskRowProps) => {
   const { categoryId, description, name } = props;
-  const { removeItem } = actions;
-
+  const { actualCategory } = useSelector(({ categoryReducer }: State) => ({
+    actualCategory: categoryReducer.categories.find(
+      (category) => category.id === categoryId
+    )?.name,
+  }));
   const dispatch = useDispatch();
 
   return (
@@ -17,19 +21,20 @@ export const TaskRow = (props: TaskRowProps) => {
           <span className='taskRow--top--black'>{name}</span>
           {categoryId && (
             <span className='taskRow--top--blue'>
-              <img src={folder} alt='' /> Категория 1
+              <img src={folder} alt='' />
+              {actualCategory}
             </span>
           )}
         </div>
         <div className='taskRow--bottom'>{description}</div>
       </div>
       <div className='taskRow--right'>
-        <img src={edit} alt='' />
+        <img src={edit} alt='' onClick={() => dispatch(openEditModal(props))} />
         <img
           src={bucket}
           alt=''
           onClick={() => {
-            dispatch(removeItem(props));
+            dispatch(openDeleteModal(props));
           }}
         />
       </div>
