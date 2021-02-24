@@ -27,24 +27,25 @@ export const ModalWrapperHOC = ({
 }: ModalWrapperHOCProps) => {
   const { closeModal } = actions;
   const dispatch = useDispatch();
+
   return (
     <div className={'modal--background'}>
       <div className={'modal--wrapper'} style={{ width: modalWidth }}>
-        <div className='modal--close'>
+        <div className={'modal--close'}>
           <img src={close} alt='close' onClick={() => dispatch(closeModal())} />
         </div>
         <h2 className={'modal--title'}>{title}</h2>
         <View />
-        <div className='modal--footer'>
+        <div className={'modal--footer'}>
           <span
             onClick={() => dispatch(onSubmit())}
-            className='modal--button modal--button-submit'
+            className={'modal--button modal--button-submit'}
             style={{ width: submitWidth }}
           >
             {submitText}
           </span>
           <span
-            className='modal--button modal--button-cancel'
+            className={'modal--button modal--button-cancel'}
             onClick={() => dispatch(closeModal())}
             style={{ width: cancelWidth }}
           >

@@ -47,7 +47,7 @@ export const Select = ({ name }: SelectProps) => {
           alt='arrow'
         />
       </div>
-      {isOpen && (
+      {isOpen && Boolean(categories.length) && (
         <>
           <div className={'select--options'}>
             {categories.map((category) => (

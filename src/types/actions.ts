@@ -5,7 +5,7 @@ type Action<T> = {
   payload: T;
 };
 
-export type ChangeIsTaskAction = Action<boolean>;
+export type ChangeTypeAction = Action<string>;
 
 export type ShowModal = Action<string>;
 

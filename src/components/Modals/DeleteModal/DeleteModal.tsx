@@ -1,11 +1,12 @@
+import { TYPES } from 'commonConstants';
 import { useSelector } from 'react-redux';
 import { State } from 'types';
 import './styles.sass';
 
 export const DeleteView = () => {
-  const { isTask, name } = useSelector(
+  const { type, name } = useSelector(
     ({ modalReducer, settingsReducer }: State) => ({
-      isTask: settingsReducer.isTask,
+      type: settingsReducer.type,
       name: modalReducer.modalData.name,
     })
   );
@@ -13,7 +14,7 @@ export const DeleteView = () => {
   return (
     <div className={'deleteModal--wrapper'}>
       Вы уверены, что хотите удалить{' '}
-      {isTask ? `задачу "${name}"` : `категорию "${name}"`}?
+      {type === TYPES.ITEM ? `задачу "${name}"` : `категорию "${name}"`}?
     </div>
   );
 };

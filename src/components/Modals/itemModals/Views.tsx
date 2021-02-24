@@ -1,4 +1,4 @@
-import { Input, Select } from 'components';
+import { Input, Select } from 'UI';
 import { actions } from 'ducks';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'types';
@@ -12,8 +12,8 @@ export const View = () => {
   const { changeField } = actions;
   return (
     <div>
-      <div className='modal--row'>
-        <div className='modal--col'>
+      <div className={'modal--row'}>
+        <div className={'modal--col'}>
           <Input
             isError={isNameError}
             value={formData.name}
@@ -26,11 +26,11 @@ export const View = () => {
             placeholder={'Введите имя задачи'}
           />
         </div>
-        <div className='modal--col'>
+        <div className={'modal--col'}>
           <Select name={'Категория'} />
         </div>
       </div>
-      <div className='modal--row'>
+      <div className={'modal--row'}>
         <Input
           value={formData.description}
           onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) => {

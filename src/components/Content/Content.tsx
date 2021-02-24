@@ -1,4 +1,4 @@
-import { TaskRow } from 'components';
+import { TaskRow } from 'UI';
 import { fetchCategories, fetchItems } from 'ducks';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { State, Item, Category } from 'types';
 import { OpenedModal } from './OpenedModal';
 import './styles.sass';
 import { ContentItems } from './types';
+import { TYPES } from 'commonConstants';
 
 export const Content = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,10 @@ export const Content = () => {
       itemReducer,
       settingsReducer,
     }: State): ContentItems => {
-      const isTask = settingsReducer.isTask;
+      const { type } = settingsReducer;
       return {
-        items: isTask ? itemReducer.items : categoryReducer.categories,
+        items:
+          type === TYPES.ITEM ? itemReducer.items : categoryReducer.categories,
       };
     }
   );

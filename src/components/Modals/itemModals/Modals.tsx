@@ -1,7 +1,7 @@
+import { ModalWrapperHOC } from 'HOC';
 import { MODAL_PROPS } from '../constants';
-import { ModalWrapperHOC } from '../ModalWrapperHOC';
 import { onCreate, onDeleteitem, onEdit } from '../handlers';
-import { DeleteView } from '../DeleteView';
+import { DeleteView } from '../DeleteModal';
 import { View } from './Views';
 
 const createTaskProps = {

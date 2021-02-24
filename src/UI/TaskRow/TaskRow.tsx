@@ -16,19 +16,19 @@ export const TaskRow = (props: TaskRowProps) => {
 
   return (
     <div className={'taskRow'}>
-      <div className='taskRow--left'>
-        <div className='taskRow--top'>
-          <span className='taskRow--top--black'>{name}</span>
+      <div className={'taskRow--left'}>
+        <div className={'taskRow--top'}>
+          <span className={'taskRow--top--black'}>{name}</span>
           {categoryId && (
-            <span className='taskRow--top--blue'>
+            <span className={'taskRow--top--blue'}>
               <img src={folder} alt='' />
               {actualCategory}
             </span>
           )}
         </div>
-        <div className='taskRow--bottom'>{description}</div>
+        <div className={'taskRow--bottom'}>{description}</div>
       </div>
-      <div className='taskRow--right'>
+      <div className={'taskRow--right'}>
         <img src={edit} alt='' onClick={() => dispatch(openEditModal(props))} />
         <img
           src={bucket}

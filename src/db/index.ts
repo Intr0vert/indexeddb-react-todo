@@ -1,2 +1,4 @@
+export * from './category';
 export { DATABASE_NAME } from './constants';
-export * from './db';
+export { openDatabase } from './openDatabase';
+export * from './item';

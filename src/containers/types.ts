@@ -1,5 +1,5 @@
-import { ChangeIsTaskAction, SettingsState } from 'types';
+import { ChangeTypeAction, SettingsState } from 'types';
 
 export type AppViewProps = {
-  changeIsTask: (state: SettingsState, action: ChangeIsTaskAction) => void;
+  changeIsTask: (state: SettingsState, action: ChangeTypeAction) => void;
 };

@@ -12,7 +12,7 @@ export type Item = {
 
 export type Category = CommonTypes;
 
-export type SettingsState = { isTask: boolean };
+export type SettingsState = { type: string };
 export type ItemState = { items: Item[] };
 export type CategoriesState = { categories: Category[] };
 export type ModalData = {

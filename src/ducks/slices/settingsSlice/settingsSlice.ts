@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ChangeIsTaskAction, SettingsState } from 'types';
+import { TYPES } from 'commonConstants';
+import { ChangeTypeAction, SettingsState } from 'types';
 
 export const settingsSlice = createSlice({
   name: 'settingsSlice',
-  initialState: { isTask: false },
+  initialState: { type: TYPES.ITEM },
   reducers: {
-    changeIsTask: (state: SettingsState, action: ChangeIsTaskAction) => {
-      state.isTask = action.payload;
+    changeType: (state: SettingsState, action: ChangeTypeAction) => {
+      state.type = action.payload;
     },
   },
 });

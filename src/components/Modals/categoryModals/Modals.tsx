@@ -1,8 +1,8 @@
+import { ModalWrapperHOC } from 'HOC';
 import { MODAL_PROPS } from '../constants';
-import { ModalWrapperHOC } from '../ModalWrapperHOC';
 import { onCreate, onDeleteCategory, onEdit } from '../handlers';
+import { DeleteView } from '../DeleteModal';
 import { View } from './Views';
-import { DeleteView } from '../DeleteView';
 
 const createCategoryProps = {
   ...MODAL_PROPS.DEFAULT,

@@ -1,20 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from 'ducks';
-import './styles.sass';
 import { State } from 'types';
-import { MODALS } from 'commonConstants';
+import { ACTION_NAMES, TYPES } from 'commonConstants';
+import './styles.sass';
+import { switcher } from 'utils';
 
 export const Header = () => {
-  const { isTask } = useSelector(({ settingsReducer }: State) => ({
+  const { type } = useSelector(({ settingsReducer }: State) => ({
     ...settingsReducer,
   }));
-  const { changeIsTask, showModal } = actions;
+  const { changeType } = actions;
   const dispatch = useDispatch();
 
-  const openModal = () =>
-    isTask
-      ? dispatch(showModal(MODALS.CREATE_ITEM_MODAL))
-      : dispatch(showModal(MODALS.CREATE_CATEGORY_MODAL));
+  const openModal = () => {
+    dispatch(switcher(ACTION_NAMES.CREATE_MODAL, type));
+  };
 
   return (
     <div className={'header'}>
@@ -22,22 +22,26 @@ export const Header = () => {
         <div className={'header--name'}>ToDo List</div>
         <div className={'header--tabs'}>
           <span
-            className={`${isTask ? 'header--tabs-active' : ''} header--tab`}
-            onClick={() => dispatch(changeIsTask(true))}
+            className={`${
+              type === TYPES.ITEM ? 'header--tabs-active' : ''
+            } header--tab`}
+            onClick={() => dispatch(changeType(TYPES.ITEM))}
           >
             Задачи
           </span>
           <span>|</span>
           <span
-            className={`${!isTask ? 'header--tabs-active' : ''} header--tab`}
-            onClick={() => dispatch(changeIsTask(false))}
+            className={`${
+              type === TYPES.CATEGORY ? 'header--tabs-active' : ''
+            } header--tab`}
+            onClick={() => dispatch(changeType(TYPES.CATEGORY))}
           >
             Категории
           </span>
         </div>
       </div>
-      <div className='header--right' onClick={openModal}>
-        Добавить {isTask ? 'задачу' : 'категорию'}
+      <div className={'header--right'} onClick={openModal}>
+        Добавить {type === TYPES.ITEM ? 'задачу' : 'категорию'}
       </div>
     </div>
   );
