@@ -1,0 +1,1 @@
+export { CategoryContentView } from './CategoryContentView';

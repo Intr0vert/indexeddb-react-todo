@@ -1,3 +1,5 @@
+import { TYPES } from 'common';
+
 export type Id = number;
 
 type CommonTypes = {
@@ -12,7 +14,7 @@ export type Item = {
 
 export type Category = CommonTypes;
 
-export type SettingsState = { type: string };
+export type SettingsState = { type: Types };
 export type ItemState = { items: Item[] };
 export type CategoriesState = { categories: Category[] };
 export type ModalData = {
@@ -34,3 +36,4 @@ export type State = {
 };
 
 export type GetState = () => State;
+export type Types = keyof typeof TYPES;

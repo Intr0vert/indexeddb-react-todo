@@ -1,4 +1,4 @@
-import { ACTION_NAMES, MODALS, TYPES } from 'commonConstants';
+import { ACTION_NAMES, MODALS, TYPES } from 'common';
 import { actions } from 'ducks';
 import { Dispatch } from 'react';
 import { ShowModal } from 'types';

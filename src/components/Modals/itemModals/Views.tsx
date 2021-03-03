@@ -1,4 +1,4 @@
-import { Input, Select } from 'UI';
+import { Input, Select } from 'components';
 import { actions } from 'ducks';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'types';

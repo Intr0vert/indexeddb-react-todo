@@ -1,3 +1,5 @@
-export { Content } from './Content';
-export { Header } from './Header';
+export { AppView } from './AppView';
+export { HeaderView } from './HeaderView';
+export { ItemContentView } from './ItemContentView';
 export * from './Modals';
+export * from './UI';

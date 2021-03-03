@@ -1,4 +1,4 @@
-import { ACTION_NAMES } from 'commonConstants';
+import { ACTION_NAMES } from 'common';
 import { actions } from 'ducks';
 import { Dispatch } from 'react';
 import { Category, GetState, Item } from 'types';

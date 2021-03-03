@@ -1,11 +1,11 @@
-import { ModalData } from './common';
+import { ModalData, Types } from './common';
 
 type Action<T> = {
   type: string;
   payload: T;
 };
 
-export type ChangeTypeAction = Action<string>;
+export type ChangeTypeAction = Action<Types>;
 
 export type ShowModal = Action<string>;
 

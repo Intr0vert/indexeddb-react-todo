@@ -1,4 +1,4 @@
-import { TYPES } from 'commonConstants';
+import { TYPES } from 'common';
 import { useSelector } from 'react-redux';
 import { State } from 'types';
 import './styles.sass';

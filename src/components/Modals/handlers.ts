@@ -1,4 +1,4 @@
-import { TYPES } from 'commonConstants';
+import { TYPES } from 'common';
 import { actions } from 'ducks';
 import {
   createCategory,
