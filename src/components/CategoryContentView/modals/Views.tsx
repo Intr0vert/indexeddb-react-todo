@@ -2,7 +2,7 @@ import { Input } from 'components';
 import { actions } from 'ducks';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'types';
-import { validateInput } from '../handlers';
+import { validateInput } from './handlers';
 
 export const View = () => {
   const { formData, isNameError } = useSelector(({ modalReducer }: State) => ({

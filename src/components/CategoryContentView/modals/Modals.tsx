@@ -1,8 +1,8 @@
 import { ModalWrapperHOC } from 'HOC';
-import { MODAL_PROPS } from '../constants';
-import { onCreate, onDeleteCategory, onEdit } from '../handlers';
-import { DeleteView } from '../DeleteModal';
+import { DeleteModalView } from 'components';
+import { onCreate, onDeleteCategory, onEdit } from './handlers';
 import { View } from './Views';
+import { MODAL_PROPS } from './constants';
 
 const createCategoryProps = {
   ...MODAL_PROPS.DEFAULT,
@@ -27,14 +27,20 @@ const deleteCategoryProps = {
   title: 'Удаление категории',
 };
 
-export const CreateCategoryModal = () => {
-  return <ModalWrapperHOC View={View} {...createCategoryProps} />;
-};
+export const CreateCategoryModal = () => (
+  <ModalWrapperHOC {...createCategoryProps}>
+    <View />
+  </ModalWrapperHOC>
+);
 
-export const EditCategoryModal = () => {
-  return <ModalWrapperHOC View={View} {...editCategoryProps} />;
-};
+export const EditCategoryModal = () => (
+  <ModalWrapperHOC {...editCategoryProps}>
+    <View />
+  </ModalWrapperHOC>
+);
 
-export const DeleteCategoryModal = () => {
-  return <ModalWrapperHOC View={DeleteView} {...deleteCategoryProps} />;
-};
+export const DeleteCategoryModal = ({ text }: { text: string }) => (
+  <ModalWrapperHOC {...deleteCategoryProps}>
+    <DeleteModalView text={text} />
+  </ModalWrapperHOC>
+);

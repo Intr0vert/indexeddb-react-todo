@@ -1,1 +1,0 @@
-export { DeleteView } from './DeleteModal';

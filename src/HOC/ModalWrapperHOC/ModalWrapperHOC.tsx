@@ -1,29 +1,28 @@
+import { useDispatch } from 'react-redux';
 import { close } from 'assets';
 import { actions } from 'ducks';
-import { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import './styles.sass';
 
 type ModalWrapperHOCProps = {
   cancelText: string;
   cancelWidth: number;
+  children: JSX.Element;
   modalWidth: number;
   onSubmit: () => void;
   submitText: string;
   submitWidth: number;
   title: string;
-  View: FC;
 };
 
 export const ModalWrapperHOC = ({
   cancelText,
   cancelWidth,
+  children,
   onSubmit,
   modalWidth,
   submitText,
   submitWidth,
   title,
-  View,
 }: ModalWrapperHOCProps) => {
   const { closeModal } = actions;
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export const ModalWrapperHOC = ({
           <img src={close} alt='close' onClick={() => dispatch(closeModal())} />
         </div>
         <h2 className={'modal--title'}>{title}</h2>
-        <View />
+        {children}
         <div className={'modal--footer'}>
           <span
             onClick={() => dispatch(onSubmit())}

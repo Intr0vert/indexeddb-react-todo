@@ -1,6 +1,6 @@
-import { TaskRow } from 'components';
+import { TaskRow } from 'containers';
 import { Category } from 'types';
-import { OpenedModal } from './OpenedModal';
+import { CategoryModal } from './CategoryModal';
 
 type Props = {
   items: Category[];
@@ -11,6 +11,6 @@ export const CategoryContentView = ({ items }: Props) => (
     {items.map((el) => (
       <TaskRow {...el} key={el.id} />
     ))}
-    <OpenedModal />
+    <CategoryModal />
   </div>
 );

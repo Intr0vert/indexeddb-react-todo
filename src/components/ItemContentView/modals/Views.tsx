@@ -1,15 +1,23 @@
 import { Input, Select } from 'components';
 import { actions } from 'ducks';
 import { useDispatch, useSelector } from 'react-redux';
-import { State } from 'types';
+import { Category, State } from 'types';
 
 export const View = () => {
-  const { formData, isNameError } = useSelector(({ modalReducer }: State) => ({
-    formData: modalReducer.modalData,
-    isNameError: modalReducer.isNameError,
-  }));
-  const dispatch = useDispatch();
   const { changeField } = actions;
+  const { categories, categoryId, formData, isNameError } = useSelector(
+    ({ categoryReducer, modalReducer }: State) => ({
+      categories: categoryReducer.categories,
+      categoryId: modalReducer.modalData.categoryId,
+      formData: modalReducer.modalData,
+      isNameError: modalReducer.isNameError,
+    })
+  );
+  const dispatch = useDispatch();
+  const onSelect = (category: Category) => {
+    dispatch(changeField({ field: 'categoryId', value: category.id }));
+  };
+
   return (
     <div>
       <div className={'modal--row'}>
@@ -27,7 +35,12 @@ export const View = () => {
           />
         </div>
         <div className={'modal--col'}>
-          <Select name={'Категория'} />
+          <Select
+            name={'Категория'}
+            categories={categories}
+            categoryId={categoryId}
+            onSelect={onSelect}
+          />
         </div>
       </div>
       <div className={'modal--row'}>

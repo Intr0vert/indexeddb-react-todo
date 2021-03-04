@@ -1,8 +1,8 @@
 import { ModalWrapperHOC } from 'HOC';
-import { MODAL_PROPS } from '../constants';
-import { onCreate, onDeleteitem, onEdit } from '../handlers';
-import { DeleteView } from '../DeleteModal';
+import { onCreate, onDeleteitem, onEdit } from './handlers';
+import { DeleteModalView } from 'components';
 import { View } from './Views';
+import { MODAL_PROPS } from './constants';
 
 const createTaskProps = {
   ...MODAL_PROPS.DEFAULT,
@@ -27,14 +27,20 @@ const deleteTaskProps = {
   title: 'Удаление задачи',
 };
 
-export const CreateItemModal = () => {
-  return <ModalWrapperHOC View={View} {...createTaskProps} />;
-};
+export const CreateItemModal = () => (
+  <ModalWrapperHOC {...createTaskProps}>
+    <View />
+  </ModalWrapperHOC>
+);
 
-export const EditItemModal = () => {
-  return <ModalWrapperHOC View={View} {...editTaskProps} />;
-};
+export const EditItemModal = () => (
+  <ModalWrapperHOC {...editTaskProps}>
+    <View />
+  </ModalWrapperHOC>
+);
 
-export const DeleteItemModal = () => {
-  return <ModalWrapperHOC View={DeleteView} {...deleteTaskProps} />;
-};
+export const DeleteItemModal = ({ text }: { text: string }) => (
+  <ModalWrapperHOC {...deleteTaskProps}>
+    <DeleteModalView text={text} />
+  </ModalWrapperHOC>
+);

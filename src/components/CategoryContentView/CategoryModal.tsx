@@ -3,22 +3,23 @@ import {
   CreateCategoryModal,
   DeleteCategoryModal,
   EditCategoryModal,
-} from 'components';
+} from './modals';
 import { useSelector } from 'react-redux';
 import { State } from 'types';
 
-export const OpenedModal = () => {
-  const { modalReducer } = useSelector((state: State) => ({
-    modalReducer: state.modalReducer,
+export const CategoryModal = () => {
+  const { actualModal, name } = useSelector(({ modalReducer }: State) => ({
+    actualModal: modalReducer.actualModal,
+    name: modalReducer.modalData.name,
   }));
 
-  switch (modalReducer.actualModal) {
+  switch (actualModal) {
     case MODALS.CREATE_CATEGORY_MODAL:
       return <CreateCategoryModal />;
     case MODALS.EDIT_CATEGORY_MODAL:
       return <EditCategoryModal />;
     case MODALS.DELETE_CATEGORY_MODAL:
-      return <DeleteCategoryModal />;
+      return <DeleteCategoryModal text={`категорию ${name}`} />;
     default:
       return <></>;
   }

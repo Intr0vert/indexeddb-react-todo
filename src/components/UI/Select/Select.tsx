@@ -1,35 +1,36 @@
 import { arrow } from 'assets';
-import { actions } from 'ducks';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { State } from 'types';
+import { Category } from 'types';
 import './styles.sass';
 
 type SelectProps = {
+  categories: Category[];
+  categoryId: number;
   name: string;
+  onSelect: Function;
 };
 
-export const Select = ({ name }: SelectProps) => {
-  const dispatch = useDispatch();
-  const { changeField } = actions;
-  const { categories, categoryId } = useSelector(
-    ({ categoryReducer, modalReducer }: State) => ({
-      categories: categoryReducer.categories,
-      categoryId: modalReducer.modalData.categoryId,
-    })
-  );
+export const Select = ({
+  categories,
+  categoryId,
+  name,
+  onSelect,
+}: SelectProps) => {
   const [isOpen, changeIsOpen] = useState(false);
   const actual = categoryId
     ? categories.find((el) => el.id === categoryId)?.name
     : 'Выберите категорию';
 
+  const onSelectClick = (e: React.MouseEvent, category: Category) => {
+    e.stopPropagation();
+
+    onSelect(category);
+    changeIsOpen(false);
+  };
+  const onLabelClick = () => changeIsOpen((s) => !s);
+
   return (
-    <label
-      className={`input--wrapper select--wrapper`}
-      onClick={() => {
-        changeIsOpen((s) => !s);
-      }}
-    >
+    <label className={`input--wrapper select--wrapper`} onClick={onLabelClick}>
       {name && <span className={'input--name'}>{name}</span>}
       <div className={'select--placeholder'}>
         <div
@@ -53,14 +54,7 @@ export const Select = ({ name }: SelectProps) => {
             {categories.map((category) => (
               <div
                 key={category.id}
-                onClick={(e) => {
-                  e.stopPropagation();
-
-                  dispatch(
-                    changeField({ field: 'categoryId', value: category.id })
-                  );
-                  changeIsOpen(false);
-                }}
+                onClick={(e) => onSelectClick(e, category)}
                 className={'select--option'}
               >
                 {category.name}
