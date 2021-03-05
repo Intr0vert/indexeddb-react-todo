@@ -1,1 +1,0 @@
-export { switcher } from './switcher';

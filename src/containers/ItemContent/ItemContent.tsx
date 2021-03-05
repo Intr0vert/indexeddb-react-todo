@@ -1,13 +1,28 @@
 import { ItemContentView } from 'components';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { State } from 'types';
+import { CreateItemModal, DeleteItemModal, EditItemModal } from './modals';
 
-export const ItemContent = () => {
-  const { items } = useSelector(({ itemReducer }: State) => {
-    return {
-      items: itemReducer.items,
-    };
-  });
+type ItemContentProps = {
+  modal: string;
+  setModal: Function;
+};
 
-  return <ItemContentView items={items} />;
+export const ItemContent = ({ modal, setModal }: ItemContentProps) => {
+  const [name, setName] = useState('');
+  const { items } = useSelector(({ itemReducer }: State) => ({
+    items: itemReducer.items,
+  }));
+
+  return (
+    <>
+      <ItemContentView items={items} setModal={setModal} setName={setName} />
+      {modal === 'create' && <CreateItemModal setModal={setModal} />}
+      {modal === 'edit' && <EditItemModal setModal={setModal} />}
+      {modal === 'delete' && (
+        <DeleteItemModal text={`задачу ${name}`} setModal={setModal} />
+      )}
+    </>
+  );
 };

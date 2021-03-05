@@ -17,25 +17,23 @@ export const TaskRowView = ({
   name,
   onEdit,
   onDelete,
-}: TaskRowViewProps) => {
-  return (
-    <div className={'taskRow'}>
-      <div className={'taskRow--left'}>
-        <div className={'taskRow--top'}>
-          <span className={'taskRow--top--black'}>{name}</span>
-          {categoryId && (
-            <span className={'taskRow--top--blue'}>
-              <img src={folder} alt='' />
-              {actualCategory}
-            </span>
-          )}
-        </div>
-        <div className={'taskRow--bottom'}>{description}</div>
+}: TaskRowViewProps) => (
+  <div className={'taskRow'}>
+    <div className={'taskRow--left'}>
+      <div className={'taskRow--top'}>
+        <span className={'taskRow--top--black'}>{name}</span>
+        {categoryId && (
+          <span className={'taskRow--top--blue'}>
+            <img src={folder} alt='' />
+            {actualCategory}
+          </span>
+        )}
       </div>
-      <div className={'taskRow--right'}>
-        <img src={edit} alt='' onClick={onEdit} />
-        <img src={bucket} alt='' onClick={onDelete} />
-      </div>
+      <div className={'taskRow--bottom'}>{description}</div>
     </div>
-  );
-};
+    <div className={'taskRow--right'}>
+      <img src={edit} alt='' onClick={onEdit} />
+      <img src={bucket} alt='' onClick={onDelete} />
+    </div>
+  </div>
+);

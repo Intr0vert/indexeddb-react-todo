@@ -24,7 +24,6 @@ export type ModalData = {
   id?: Id;
 };
 export type ModalState = {
-  actualModal: string | null;
   modalData: ModalData;
   isNameError?: boolean;
 };

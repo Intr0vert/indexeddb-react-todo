@@ -7,8 +7,6 @@ type Action<T> = {
 
 export type ChangeTypeAction = Action<Types>;
 
-export type ShowModal = Action<string>;
-
 export type SetError = Action<boolean>;
 
 type NewField = {

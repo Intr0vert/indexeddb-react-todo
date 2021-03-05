@@ -1,16 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  ChangeField,
-  ChangeModalData,
-  ModalState,
-  SetError,
-  ShowModal,
-} from 'types';
+import { ChangeField, ChangeModalData, ModalState, SetError } from 'types';
 
 export const modalSlice = createSlice({
   name: 'modalSlice',
   initialState: {
-    actualModal: null,
     modalData: {
       id: undefined,
       categoryId: undefined,
@@ -28,8 +21,7 @@ export const modalSlice = createSlice({
         ...action.payload,
       };
     },
-    closeModal: (state: ModalState) => {
-      state.actualModal = null;
+    clearModal: (state: ModalState) => {
       state.modalData = {
         description: '',
         categoryId: undefined,
@@ -38,9 +30,6 @@ export const modalSlice = createSlice({
     },
     setError: (state: ModalState, action: SetError) => {
       state.isNameError = action.payload;
-    },
-    showModal: (state: ModalState, action: ShowModal) => {
-      state.actualModal = action.payload;
     },
   },
 });

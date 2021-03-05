@@ -27,20 +27,40 @@ const deleteCategoryProps = {
   title: 'Удаление категории',
 };
 
-export const CreateCategoryModal = () => (
-  <ModalWrapperHOC {...createCategoryProps}>
+type Props = {
+  setModal: Function;
+};
+
+type DeleteProps = {
+  text: string;
+} & Props;
+
+export const CreateCategoryModal = ({ setModal }: Props) => (
+  <ModalWrapperHOC
+    {...createCategoryProps}
+    clearModal={() => setModal('')}
+    setModal={setModal}
+  >
     <View />
   </ModalWrapperHOC>
 );
 
-export const EditCategoryModal = () => (
-  <ModalWrapperHOC {...editCategoryProps}>
+export const EditCategoryModal = ({ setModal }: Props) => (
+  <ModalWrapperHOC
+    {...editCategoryProps}
+    clearModal={() => setModal('')}
+    setModal={setModal}
+  >
     <View />
   </ModalWrapperHOC>
 );
 
-export const DeleteCategoryModal = ({ text }: { text: string }) => (
-  <ModalWrapperHOC {...deleteCategoryProps}>
+export const DeleteCategoryModal = ({ setModal, text }: DeleteProps) => (
+  <ModalWrapperHOC
+    {...deleteCategoryProps}
+    clearModal={() => setModal('')}
+    setModal={setModal}
+  >
     <DeleteModalView text={text} />
   </ModalWrapperHOC>
 );

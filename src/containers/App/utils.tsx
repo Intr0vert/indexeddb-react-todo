@@ -1,6 +1,5 @@
 import { TYPES } from 'common';
-import { CategoryContent } from 'containers/CategoryContent';
-import { ItemContent } from 'containers/ItemContent';
+import { CategoryContent, ItemContent } from 'containers';
 
 export const getView = (type: string) => {
   switch (type) {

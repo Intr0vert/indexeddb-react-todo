@@ -1,12 +1,13 @@
 import { Header } from 'containers';
 
 type Props = {
-  View: () => JSX.Element;
+  setModal: Function;
+  children: JSX.Element;
 };
 
-export const AppView = ({ View }: Props) => (
+export const AppView = ({ setModal, children }: Props) => (
   <>
-    <Header />
-    <View />
+    <Header setModal={setModal} />
+    {children}
   </>
 );

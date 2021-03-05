@@ -1,23 +1,31 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Category, Item, State } from 'types';
 import { TaskRowView } from 'components';
-import { openDeleteModal, openEditModal } from './handlers';
+import { actions } from 'ducks';
 
-export type TaskRowProps = Item & Category;
+export type TaskRowProps = {
+  setModal: Function;
+  setName: Function;
+} & Item &
+  Category;
 
 export const TaskRow = (props: TaskRowProps) => {
-  const { categoryId, description, name } = props;
+  const { changeModalData } = actions;
+  const dispatch = useDispatch();
+  const { categoryId, description, id, name, setModal, setName } = props;
   const { actualCategory } = useSelector(({ categoryReducer }: State) => ({
     actualCategory: categoryReducer.categories.find(
       (category) => category.id === categoryId
     )?.name,
   }));
-  const dispatch = useDispatch();
   const onEdit = () => {
-    dispatch(openEditModal(props));
+    setModal('edit');
+    dispatch(changeModalData({ categoryId, description, name, id }));
   };
   const onDelete = () => {
-    dispatch(openDeleteModal(props));
+    setModal('delete');
+    dispatch(changeModalData({ categoryId, description, name, id }));
+    setName(name);
   };
 
   return (

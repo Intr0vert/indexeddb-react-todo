@@ -6,15 +6,15 @@ import { MODAL_PROPS } from './constants';
 
 const createTaskProps = {
   ...MODAL_PROPS.DEFAULT,
-  title: 'Создание задачи',
   onSubmit: onCreate,
+  title: 'Создание задачи',
 };
 
 const editTaskProps = {
   ...MODAL_PROPS.DEFAULT,
+  onSubmit: onEdit,
   submitText: 'Сохранить',
   title: 'Редактирование задачи',
-  onSubmit: onEdit,
 };
 
 const deleteTaskProps = {
@@ -27,20 +27,40 @@ const deleteTaskProps = {
   title: 'Удаление задачи',
 };
 
-export const CreateItemModal = () => (
-  <ModalWrapperHOC {...createTaskProps}>
+type Props = {
+  setModal: Function;
+};
+
+type DeleteProps = {
+  text: string;
+} & Props;
+
+export const CreateItemModal = ({ setModal }: Props) => (
+  <ModalWrapperHOC
+    {...createTaskProps}
+    clearModal={() => setModal('')}
+    setModal={setModal}
+  >
     <View />
   </ModalWrapperHOC>
 );
 
-export const EditItemModal = () => (
-  <ModalWrapperHOC {...editTaskProps}>
+export const EditItemModal = ({ setModal }: Props) => (
+  <ModalWrapperHOC
+    {...editTaskProps}
+    clearModal={() => setModal('')}
+    setModal={setModal}
+  >
     <View />
   </ModalWrapperHOC>
 );
 
-export const DeleteItemModal = ({ text }: { text: string }) => (
-  <ModalWrapperHOC {...deleteTaskProps}>
+export const DeleteItemModal = ({ setModal, text }: DeleteProps) => (
+  <ModalWrapperHOC
+    {...deleteTaskProps}
+    clearModal={() => setModal('')}
+    setModal={setModal}
+  >
     <DeleteModalView text={text} />
   </ModalWrapperHOC>
 );
