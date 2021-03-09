@@ -14,10 +14,18 @@ export const Header = ({ setModal }: HeaderProps) => {
   const { type } = useSelector(({ settingsReducer }: State) => ({
     ...settingsReducer,
   }));
-  const { changeType } = actions;
+  const { changeType, changeModalData } = actions;
   const tabs: any[] = Object.keys(TYPES);
   const onChangeType = (type: Types) => dispatch(changeType(type));
   const openModal = () => {
+    dispatch(
+      changeModalData({
+        categoryId: undefined,
+        description: '',
+        name: '',
+        id: undefined,
+      })
+    );
     setModal('create');
   };
 
